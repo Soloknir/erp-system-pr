@@ -1,9 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-  type: 'text' | 'password' | 'number',
+  type?: 'text' | 'password'
   title: string
   placeholder: string
-}>();
+}>()
+
+const model = defineModel();
 </script>
 
 <template>
@@ -11,7 +13,14 @@ defineProps<{
     <label for="input-field" class="input__title">
       {{ title }}
     </label>
-    <input name="input-field" class="input__field" :placeholder :type/>
+    <input
+      name="input-field"
+      class="input__field"
+      :placeholder
+      :type
+      autocomplete="new-password"
+      v-model="model"
+    />
   </div>
 </template>
 
@@ -37,12 +46,13 @@ defineProps<{
     width: 460px;
     padding: 16px 15px;
     border-radius: 12px;
-    border: 1px solid #D5D5D6;
+    border: 1px solid #d5d5d6;
+    outline: none;
     cursor: pointer;
 
     &:hover,
     &:focus {
-      border: 1px solid #9CBEFF
+      border: 1px solid #9cbeff;
     }
   }
 }

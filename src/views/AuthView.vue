@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import AppInput from '@/components/UI/AppInput.vue';
-import AppButton from '@/components/UI/AppButton.vue';
+import WelcomeBackCard from '@/components/account/WelcomeBackCard.vue'
+import AccountsList from '@/components/account/AccountsList.vue'
 </script>
 
 <template>
   <main class="container">
-    <form class="auth-form">
-      <h1>Вход в ERP-систему</h1>
-      <AppInput type="number" placeholder="Введите табельный номер" title="Табельный номер" />
-      <AppInput type="text" placeholder="Введите логин" title="Логин" />
-      <AppInput type="password" placeholder="Введите пароль" title="Пароль" />
-      <AppButton>Войти</AppButton>
-    </form>
+    <WelcomeBackCard>
+      <AccountsList />
+    </WelcomeBackCard>
   </main>
 </template>
 
@@ -30,10 +26,4 @@ import AppButton from '@/components/UI/AppButton.vue';
   background: #ffffff;
 }
 
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-
-}
 </style>
