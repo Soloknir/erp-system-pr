@@ -30,11 +30,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const { isAuthenticated } = useAuthStore();
-  if (!['Accounts', 'Auth'].includes(to.name) && !isAuthenticated) {
-    next({ name: 'Auth' })
-  } else {
-    next()
-  }
+  if (!['Accounts', 'Auth'].includes(to.name) && !isAuthenticated) next({ name: 'Auth' })
+  else next()
 })
 
 export default router

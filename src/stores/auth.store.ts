@@ -10,7 +10,11 @@ export const useAuthStore = defineStore('auth', () => {
     const api = useApi();
 
     api.auth.login(signInDto)
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (error && error.value) {
+          throw new Error(error.value);
+        }
+
         const accessToken = JSON.parse(data.value as string)['access_token'];
 
         localStorage.setItem('access_token', JSON.stringify(accessToken));
