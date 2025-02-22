@@ -3,29 +3,33 @@ import useApi from '@/api/composables/use-api';
 import { defineStore } from 'pinia'
 import { ref } from 'vue';
 
-interface IUser {
-  tabel: string;
-  name: string;
-}
-
 export const useAuthStore = defineStore('auth', () => {
-  const user = ref<IUser[]>([])
+  const isAuthenticated = ref(!!localStorage.getItem('access_token'))
 
   async function login(signInDto: { tabel: string, username: string, password: string }) {
     const api = useApi();
 
-    await api.auth.login(signInDto);
+    api.auth.login(signInDto)
+      .then(({ data }) => {
+        const accessToken = JSON.parse(data.value as string)['access_token'];
 
-    localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('access_token', JSON.stringify(accessToken));
+        isAuthenticated.value = true;
+      })
+      .catch((error) => {
+        console.error('[BLOG CATEGORIES]:', error)
+      });
   }
 
   function logout() {
-    localStorage.removeItem('user');
+    isAuthenticated.value = false;
+    localStorage.removeItem('access_token');
   }
 
   return {
     login,
-    logout
+    logout,
+    isAuthenticated
   }
 })
 

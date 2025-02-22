@@ -22,7 +22,8 @@ import AppChevronBackIcon from '../icons/AppChevronDownIcon.vue';
     box-sizing: border-box;
     padding: 11px 13px;
     border-radius: 10px;
-    outline: none;
+    background: none;
+    border: none;
     cursor: pointer;
 
     .icon {

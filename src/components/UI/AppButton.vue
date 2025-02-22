@@ -12,9 +12,19 @@
   width: auto;
   height: 56px;
   border-radius: 10px;
-  border: 1px solid #D5D5D6;
+  border: none;
   background: #F5F5F5;
   color: #757D8A;
   cursor: pointer;
+
+  &:hover {
+    color: #ffffff;
+    background: #77A6FF;
+  }
+
+  &:active {
+    color: #ffffff;
+    background: #548CF6;
+  }
 }
 </style>
