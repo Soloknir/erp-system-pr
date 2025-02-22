@@ -9,7 +9,7 @@ const model = defineModel();
 </script>
 
 <template>
-  <div class="input__container">
+<div class="input__container">
     <label for="input-field" class="input__title">
       {{ title }}
     </label>

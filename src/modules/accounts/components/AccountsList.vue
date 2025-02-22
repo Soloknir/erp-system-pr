@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import AccountAddBtn from '@/components/account/AccountAddBtn.vue'
-import AccountCardBtn from '@/components/account/AccountCardBtn.vue';
+import { RouterLink } from 'vue-router';
+import AccountAddBtn from './AccountAddBtn.vue'
+import AccountCardBtn from './AccountCardBtn.vue';
 </script>
 
 <template>
   <div class="accounts">
-    <AccountAddBtn />
+    <RouterLink to="/auth">
+      <AccountAddBtn />
+    </RouterLink>
     <div class="accounts__list">
+      <AccountCardBtn username="Иванова И.И." tabel="001" image-src="/public/images/stubs/avatar.avif" />
+      <AccountCardBtn username="Иванова И.И." tabel="002" image-src="/public/images/stubs/avatar.avif" />
+      <AccountCardBtn username="Иванова И.И." tabel="003" image-src="/public/images/stubs/avatar.avif" />
       <AccountCardBtn username="Иванова И.И." tabel="001" image-src="/public/images/stubs/avatar.avif" />
       <AccountCardBtn username="Иванова И.И." tabel="002" image-src="/public/images/stubs/avatar.avif" />
       <AccountCardBtn username="Иванова И.И." tabel="003" image-src="/public/images/stubs/avatar.avif" />

@@ -43,6 +43,8 @@ import AppPlusIcon from '@/components/icons/AppPlusIcon.vue'
     font-weight: 400;
     font-size: 16px;
     line-height: 19.36px;
+    color: #677074;
+;
   }
 }
 </style>

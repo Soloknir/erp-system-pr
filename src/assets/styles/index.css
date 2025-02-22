@@ -15,14 +15,56 @@ body {
   background: #d8e7fd;
 }
 
+button {
+  all: unset;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 
 input[type=number] {
-  --moz-appearance:textfield; /* Firefox */
+  --moz-appearance:textfield;
 }
+
+a {
+  color: inherit; 
+  text-decoration: inherit;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.15s ease-out;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to,
+.slide-right-enter-from,
+.slide-right-leave-to {
+  opacity: 0;
+}
+
+.slide-left-enter-from,
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-left-leave-to,
+.slide-right-enter-from {
+  transform: translateX(-100%);
+}
+

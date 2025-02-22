@@ -27,7 +27,7 @@ defineProps<{
   align-items: center;
   gap: 15px;
   padding: 0 25px;
-  height: 90px;
+  min-height: 90px;
   box-sizing: border-box;
   border-radius: 20px;
   background: #ffffff80;

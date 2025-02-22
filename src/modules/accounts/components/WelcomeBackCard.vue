@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import AppLogo from '@/components/UI/AppLogo.vue';
+
 </script>
 
 <template>
   <div class="card">
     <div class="card__header">
-      <img class="card__header-logo" src="/public/images/logo.svg" alt="logo-image"/>
+      <AppLogo />
       <div class="auth-text">
         Вход в ERP-систему
       </div>
@@ -24,7 +26,7 @@
   align-items: center;
   gap: 50px;
   width: 725px;
-  padding: 40px 0;
+  padding: 20px 0;
 
   border-radius: 25px;
   background: linear-gradient(213.61deg, #A1C2FF 3.13%, #75A3FB 46.43%, #4781EE 92.74%);
@@ -34,11 +36,6 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-
-    &-logo {
-      width: 60px;
-      height: 60px;
-    }
   }
 }
 
