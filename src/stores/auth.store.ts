@@ -46,8 +46,8 @@ export const useAuthStore = defineStore('auth', () => {
           }))
         }
       })
-      .catch((error) => {
-        console.error('[LOGIN FAILED]:', error)
+      .catch(() => {
+        alert('Не удалось авторизоваться!')
       })
   }
 
