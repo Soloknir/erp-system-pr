@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth.store';
 import AccountCardLogin from './AccountCardLogin.vue';
+import { useRouter } from 'vue-router';
 
 const { login } = useAuthStore();
+const router = useRouter();
 
 const props = defineProps<{
   imageSrc: string;
@@ -16,6 +18,11 @@ function handleLogin(password: string) {
     username: props.username,
     tabel: props.tabel,
     password
+  },
+  {
+    callback: () => {
+      router.push({ name: 'Home' })
+    },
   })
 }
 </script>

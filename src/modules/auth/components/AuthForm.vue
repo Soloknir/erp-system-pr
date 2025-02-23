@@ -8,10 +8,12 @@ import { useUserNames } from '@/composables/use-user-names'
 import { useUserTabels } from '@/composables/use-user-tabels'
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth.store'
+import { useRouter } from 'vue-router'
 
 const { userNames, getUserNames } = useUserNames()
 const { userTabels, getUserTabels } = useUserTabels()
-const { login } = useAuthStore();
+const { login } = useAuthStore()
+const router = useRouter()
 
 Promise.all([getUserNames(), getUserTabels()])
 
@@ -19,14 +21,23 @@ const formValues = ref({
   tabel: '',
   username: '',
   password: '',
+  remember: true,
 })
 
-function handleSubmit() {
-  login({
-    tabel: formValues.value.tabel,
-    username: formValues.value.username,
-    password: formValues.value.password
-  });
+async function handleSubmit() {
+  await login(
+    {
+      tabel: formValues.value.tabel,
+      username: formValues.value.username,
+      password: formValues.value.password,
+    },
+    {
+      remember: formValues.value.remember,
+      callback: () => {
+        router.push({ name: 'Home' })
+      },
+    },
+  )
 }
 </script>
 
@@ -51,7 +62,7 @@ function handleSubmit() {
       title="Пароль"
       v-model="formValues.password"
     />
-    <AppRemember />
+    <AppRemember v-model="formValues.remember" />
     <AppButton>Войти</AppButton>
   </form>
 </template>

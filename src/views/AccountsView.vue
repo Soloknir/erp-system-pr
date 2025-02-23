@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import WelcomeBackCard from '@/modules/accounts/components/WelcomeBackCard.vue'
 import AccountsList from '@/modules/accounts/components/AccountsList.vue'
+import AppSwitcher from '@/components/UI/AppSwitcher.vue';
+import { useAuthStore } from '@/stores/auth.store';
+
+const { savedAccounts } = useAuthStore();
 </script>
 
 <template>
   <main class="page-card">
     <WelcomeBackCard>
-      <AccountsList />
+      <AccountsList :savedAccounts="savedAccounts" />
     </WelcomeBackCard>
+    <AppSwitcher v-if="savedAccounts.length"/>
   </main>
 </template>
 
@@ -15,7 +20,7 @@ import AccountsList from '@/modules/accounts/components/AccountsList.vue'
 .page-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 10px;
 
@@ -25,5 +30,4 @@ import AccountsList from '@/modules/accounts/components/AccountsList.vue'
   border-radius: 25px;
   background: #ffffff;
 }
-
 </style>

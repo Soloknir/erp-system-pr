@@ -24,9 +24,9 @@ import AppLogo from '@/components/UI/AppLogo.vue';
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
   width: 725px;
-  padding: 20px 0;
+  padding: 30px 0;
 
   border-radius: 25px;
   background: linear-gradient(213.61deg, #A1C2FF 3.13%, #75A3FB 46.43%, #4781EE 92.74%);
@@ -35,7 +35,7 @@ import AppLogo from '@/components/UI/AppLogo.vue';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
   }
 }
 

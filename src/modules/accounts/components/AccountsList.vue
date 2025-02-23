@@ -5,30 +5,25 @@ import { onClickOutside } from '@vueuse/core';
 import { RouterLink } from 'vue-router'
 import AccountAddBtn from './AccountAddBtn.vue'
 import AccountCardBtn from './AccountCard.vue'
+import type { IUser } from '@/types';
 
-interface IAccount {
-  id: string,
-  username: string,
-  tabel: string,
-  imageSrc: string
+interface IAccount extends IUser {
+  imageSrc: string,
 }
+
+const props = defineProps<{
+  savedAccounts: IUser[]
+}>();
 
 const selectedAccount = ref<IAccount[] | null>(null)
 const accountsListRef = useTemplateRef<HTMLElement>('accountsList')
-
-const accounts: IAccount[] = [
-  { id: '1', username: 'Иванова И.И.', tabel: '001', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '2', username: 'Иванова И.И.', tabel: '002', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '3', username: 'Иванова И.И.', tabel: '003', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '4', username: 'Иванова И.И.', tabel: '004', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '5', username: 'Иванова И.И.', tabel: '005', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '6', username: 'Иванова И.И.', tabel: '006', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '7', username: 'Иванова И.И.', tabel: '007', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '8', username: 'Иванова И.И.', tabel: '008', imageSrc: '/images/stubs/avatar.avif' },
-  { id: '9', username: 'Иванова И.И.', tabel: '009', imageSrc: '/images/stubs/avatar.avif' },
-];
-
-const visibleAccounts = computed(() => selectedAccount.value ?? accounts);
+const accounts = computed<IAccount[]>(() => props.savedAccounts.map(item => {
+  return {
+    ...item,
+    imageSrc: '/images/stubs/avatar.avif'
+  }
+}));
+const visibleAccounts = computed(() => selectedAccount.value ?? accounts.value);
 
 function handleSelect(account: IAccount | null) {
   selectedAccount.value = account ? [account] : null;

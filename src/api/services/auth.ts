@@ -1,9 +1,13 @@
-import type HttpService from '../http/http-service'
+import type { ILoginDto } from '@/types';
+import type HttpService from '../http/http-service';
+
+
 
 const auth = (http: HttpService) => {
   return {
-    login: async (options: object) =>
-      await http.post('/auth/login', options),
+    async login(options: ILoginDto) {
+      return await http.post('/auth/login', options);
+    }
   }
 }
 

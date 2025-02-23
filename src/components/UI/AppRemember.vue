@@ -1,6 +1,10 @@
+<script setup lang="ts">
+const model = defineModel({ default: false })
+</script>
+
 <template>
   <div class="remember">
-    <input type="checkbox" name="remember" class="remember__checkbox" />
+    <input type="checkbox" name="remember" class="remember__checkbox" v-model="model"/>
     <label for="remember"  class="remember__label">
       Запомнить аккаунт
     </label>
